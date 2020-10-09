@@ -30,38 +30,27 @@ namespace Colorful
         private static readonly string WRITELINE_TRAILER = "\r\n";
         private static readonly string WRITE_TRAILER = "";
 
-#if !NET40
-        private static TaskQueue Queue { get; } = new TaskQueue();
-#endif
-
         private static void MapToScreen(IEnumerable<KeyValuePair<string, Color>> styleMap, string trailer)
         {
-#if !NET40
-            Queue.Enqueue(() => Task.Factory.StartNew(() =>
+            var oldSystemColor = System.Console.ForegroundColor;
+            int writeCount = 1;
+            foreach (KeyValuePair<string, Color> textChunk in styleMap)
             {
-#endif
-                var oldSystemColor = System.Console.ForegroundColor;
-                int writeCount = 1;
-                foreach (KeyValuePair<string, Color> textChunk in styleMap)
+                System.Console.ForegroundColor = colorManager.GetConsoleColor(textChunk.Value);
+
+                if (writeCount == styleMap.Count())
                 {
-                    System.Console.ForegroundColor = colorManager.GetConsoleColor(textChunk.Value);
-
-                    if (writeCount == styleMap.Count())
-                    {
-                        System.Console.Write(textChunk.Key + trailer);
-                    }
-                    else
-                    {
-                        System.Console.Write(textChunk.Key);
-                    }
-
-                    writeCount++;
+                    System.Console.Write(textChunk.Key + trailer);
+                }
+                else
+                {
+                    System.Console.Write(textChunk.Key);
                 }
 
-                System.Console.ForegroundColor = oldSystemColor;
-#if !NET40
-            })).Wait();
-#endif
+                writeCount++;
+            }
+
+            System.Console.ForegroundColor = oldSystemColor;
         }
 
         private static void MapToScreen(StyledString styledString, string trailer)
