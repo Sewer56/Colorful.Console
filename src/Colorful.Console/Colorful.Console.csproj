@@ -4,9 +4,8 @@
     <Description>Style your C# console output!</Description>
     <Copyright>@ Tom Akita. All rights Reserved.</Copyright>
     <AssemblyTitle>Colorful.Console</AssemblyTitle>
-    <VersionPrefix>1.2</VersionPrefix>
     <Authors>Tom Akita;Muhammad Rehan Saeed;Matt Furden;Drew Noakes;Jamie Gould;Marcos Vinicius Maia;Sergey Korshunov;Adam Schiavone;IGusev;Shreyas Jejurkar</Authors>
-    <TargetFrameworks>netstandard2.0;net40;net45;net451;net452;net46;net461</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net40;net45;net451;net452;net46;net461;netcoreapp3.1</TargetFrameworks>
     <AssemblyName>Colorful.Console</AssemblyName>
     <PackageId>Colorful.Console</PackageId>
     <PackageTags>Style;Styled;Output;Colourful;Colorful;Console;Command;Line;ASCII;Art;FIGlet</PackageTags>
@@ -20,8 +19,7 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <Version>1.2.2</Version>
-    <AssemblyVersion>1.2.2.0</AssemblyVersion>
+    <Version>1.2.2-reloaded</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
@@ -76,8 +74,5 @@
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
-
-
-    
 
 </Project>
